@@ -1,4 +1,4 @@
-package co.edu.escuelaing.java_web_app_docker_aws_deployment;
+package co.edu.escuelaing.java_web_app_docker_aws_deployment.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;

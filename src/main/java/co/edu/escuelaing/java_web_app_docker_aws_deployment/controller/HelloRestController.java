@@ -1,4 +1,4 @@
-package co.edu.escuelaing.java_web_app_docker_aws_deployment;
+package co.edu.escuelaing.java_web_app_docker_aws_deployment.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
