@@ -5,7 +5,7 @@ FROM openjdk:17
 WORKDIR /usrapp/bin
 
 # Exponer el puerto en el que correrá la aplicación (opcional)
-ENV PORT 6000
+ENV PORT 4567
 
 # Copiar las clases compiladas y dependencias al contenedor
 COPY target/classes /usrapp/bin/classes

@@ -8,37 +8,37 @@ services:
         container_name: web
         ports:
             - "8080:4567"
-    
+
     logservice1:
         build:
             context: .
             dockerfile: Dockerfile
         container_name: logservice1
         environment:
-            - SPRING_DATA_MONGODB_URI=mongodb://db:27017/logs
+            SPRING_DATA_MONGODB_URI: mongodb://db:27017/logs
         ports:
             - "34001:4567"
-    
+
     logservice2:
         build:
             context: .
             dockerfile: Dockerfile
         container_name: logservice2
         environment:
-            - SPRING_DATA_MONGODB_URI=mongodb://db:27017/logs
+            SPRING_DATA_MONGODB_URI: mongodb://db:27017/logs
         ports:
             - "34002:4567"
-    
+
     logservice3:
         build:
             context: .
             dockerfile: Dockerfile
         container_name: logservice3
         environment:
-            - SPRING_DATA_MONGODB_URI=mongodb://db:27017/logs
+            SPRING_DATA_MONGODB_URI: mongodb://db:27017/logs
         ports:
             - "34003:4567"
-    
+
     db:
         image: mongo:3.6.1
         container_name: db
