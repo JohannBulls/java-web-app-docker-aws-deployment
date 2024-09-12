@@ -1,15 +1,16 @@
 package co.edu.escuelaing.java_web_app_docker_aws_deployment.controller;
 
-import co.edu.escuelaing.java_web_app_docker_aws_deployment.model.LogEntry;
-import co.edu.escuelaing.java_web_app_docker_aws_deployment.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import co.edu.escuelaing.java_web_app_docker_aws_deployment.model.LogEntry;
+import co.edu.escuelaing.java_web_app_docker_aws_deployment.repository.LogRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/logservice")
 public class LogServiceController {
 
     @Autowired
@@ -17,8 +18,10 @@ public class LogServiceController {
 
     @PostMapping("/log")
     public List<LogEntry> logMessage(@RequestBody String message) {
-        LogEntry logEntry = new LogEntry(message, LocalDateTime.now());
-        logRepository.save(logEntry); 
+        LogEntry logEntry = new LogEntry();
+        logEntry.setMessage(message);
+        logEntry.setTimestamp(LocalDateTime.now());
+        logRepository.save(logEntry);
 
         return logRepository.findTop10ByOrderByTimestampDesc();
     }

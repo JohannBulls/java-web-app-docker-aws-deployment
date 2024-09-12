@@ -10,6 +10,7 @@ ENV PORT 6000
 # Copiar las clases compiladas y dependencias al contenedor
 COPY target/classes /usrapp/bin/classes
 COPY target/dependency /usrapp/bin/dependency
+COPY /src/main/resources/static /usrapp/bin/classes/static
 
 # Especificar el comando que ejecutará la aplicación Spring Boot
 CMD ["java", "-cp", "./classes:./dependency/*", "co.edu.escuelaing.java_web_app_docker_aws_deployment.RestServiceApplication"]

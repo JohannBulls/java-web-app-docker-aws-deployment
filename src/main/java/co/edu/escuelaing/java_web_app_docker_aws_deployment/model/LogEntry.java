@@ -2,7 +2,6 @@ package co.edu.escuelaing.java_web_app_docker_aws_deployment.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.time.LocalDateTime;
 
 @Document(collection = "logs")

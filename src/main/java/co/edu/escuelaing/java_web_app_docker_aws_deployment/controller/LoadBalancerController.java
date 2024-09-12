@@ -1,20 +1,12 @@
-package co.edu.escuelaing.java_web_app_docker_aws_deployment.service;
+package co.edu.escuelaing.java_web_app_docker_aws_deployment.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDateTime;
-import java.util.List;
+@RestController
+public class LoadBalancerController {
 
-@Service
-public class LogService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
+    private final RestTemplate restTemplate = new RestTemplate();
     private final String[] instances = {
             "http://logservice1:6000/log",
             "http://logservice2:6000/log",
@@ -24,14 +16,11 @@ public class LogService {
 
     @PostMapping("/submit")
     public String sendToLogService(@RequestBody String message) {
-        if (message == null || message.trim().isEmpty()) {
-            return "Message cannot be null or empty";
-        }
-
         String targetUrl = instances[currentInstance];
         String response = restTemplate.postForObject(targetUrl, message, String.class);
         currentInstance = (currentInstance + 1) % instances.length;
+        System.out.println(response);
         return response;
     }
-}
 
+}
